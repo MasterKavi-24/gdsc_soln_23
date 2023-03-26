@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:gdsc_soln_23/screens/login.dart';
 import 'package:gdsc_soln_23/screens/home.dart';
+import 'package:gdsc_soln_23/services/shared_prefs.dart';
 
 void checkLogin(BuildContext context, TextEditingController usernameController, TextEditingController passwordController) {
   if (usernameController.text == 'admin' &&
       passwordController.text == 'admin') {
+    // SharedPrefs.save('isLoggedIn');
     Navigator.push(
       context,
       MaterialPageRoute(builder: (context) => Home()),
