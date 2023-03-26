@@ -8,14 +8,14 @@ import 'package:flutter/material.dart';
 // post likes
 // post comments
 
-class Feed extends StatefulWidget {
-  Feed({Key? key}) : super(key: key);
+class FeedCard extends StatefulWidget {
+  FeedCard({Key? key}) : super(key: key);
 
   @override
-  State<Feed> createState() => _FeedState();
+  State<FeedCard> createState() => _FeedCardState();
 }
 
-class _FeedState extends State<Feed> {
+class _FeedCardState extends State<FeedCard> {
 
   late String username;
   late String profilePicture;

@@ -3,11 +3,14 @@ import 'package:gdsc_soln_23/screens/login.dart';
 import 'package:gdsc_soln_23/screens/home.dart';
 import 'package:gdsc_soln_23/services/shared_prefs.dart';
 
-void checkLogin(BuildContext context, TextEditingController usernameController, TextEditingController passwordController) {
-  if (usernameController.text == 'admin' &&
-      passwordController.text == 'admin') {
-    // SharedPrefs.save('isLoggedIn');
-    Navigator.push(
+void checkLogin(BuildContext context, String username, String password) async {
+  if (username == 'admin' && password == 'admin') {
+    bool isLoggedIn = await SharedPrefs.readBool("isLoggedIn");
+    if (isLoggedIn == false) {
+      SharedPrefs.saveBool("isLoggedIn", true);
+    }
+    print(isLoggedIn);
+    Navigator.pushReplacement(
       context,
       MaterialPageRoute(builder: (context) => Home()),
     );

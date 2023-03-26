@@ -5,10 +5,16 @@ import 'package:gdsc_soln_23/screens/home.dart';
 import 'package:gdsc_soln_23/screens/register.dart';
 import 'package:gdsc_soln_23/services/login.dart';
 
-class Login extends StatelessWidget {
+class Login extends StatefulWidget {
 
+  @override
+  State<Login> createState() => _LoginState();
+}
+
+class _LoginState extends State<Login> {
   // create usernameController and passwordController
   final TextEditingController usernameController = TextEditingController();
+
   final TextEditingController passwordController = TextEditingController();
 
   @override
@@ -58,7 +64,7 @@ class Login extends StatelessWidget {
               ElevatedButton(
                 onPressed: () {
                   print("Login");
-                  checkLogin(context, usernameController, passwordController);
+                  checkLogin(context, usernameController.text, passwordController.text);
                 },
                 child: Text('Login'),
                 style: ElevatedButton.styleFrom(
@@ -76,7 +82,7 @@ class Login extends StatelessWidget {
               GestureDetector(
                 onTap: () {
                   print("Don't have an account ? Register");
-                  Navigator.push(
+                  Navigator.pushReplacement(
                     context,
                     MaterialPageRoute(
                       builder: (context) => Register(),

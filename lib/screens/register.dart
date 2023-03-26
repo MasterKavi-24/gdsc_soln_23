@@ -46,7 +46,7 @@ class Register extends StatelessWidget {
                   onTap: () async {
                     // final cameras = await availableCameras();
                     // final firstCamera = cameras.first;
-                    // Navigator.push(
+                    // Navigator.pushReplacement(
                     //   context,
                     //   MaterialPageRoute(
                     //     builder: (context) => TakePictureScreen(
@@ -141,14 +141,14 @@ class Register extends StatelessWidget {
 
                     // LoginService.register(user).then((value) {
                     //   if (value) {
-                    //     Navigator.push(
+                    //     Navigator.pushReplacement(
                     //       context,
                     //       MaterialPageRoute(
                     //         builder: (context) => Home(),
                     //       ),
                     //     );
                     //   } else {
-                    //     Navigator.push(
+                    //     Navigator.pushReplacement(
                     //       context,
                     //       MaterialPageRoute(
                     //         builder: (context) => Login(),

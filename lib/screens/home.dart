@@ -1,48 +1,68 @@
 // create a beautiful instagram like feed clone page
 
 import 'package:flutter/material.dart';
-import 'package:gdsc_soln_23/widgets/feed.dart';
+import 'package:gdsc_soln_23/screens/feed.dart';
+import 'package:gdsc_soln_23/screens/intro.dart';
+import 'package:gdsc_soln_23/widgets/feedCard.dart';
 
-class Home extends StatelessWidget {
+class Home extends StatefulWidget {
+
+  @override
+  State<Home> createState() => _HomeState();
+}
+
+class _HomeState extends State<Home> {
+  int currentIndex = 0;
+  int _selectedIndex = 0;
+
+  static List<Widget> _widgetOptions = <Widget>[
+    Feed(),
+    Intro(),
+    Feed(),
+    Feed(),
+  ];
+
+
+  void _onItemTapped(int index) {
+    setState(() {
+      _selectedIndex = index;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: SafeArea(
-        child: Container(
-          color: Colors.white,
-          padding: EdgeInsets.symmetric(horizontal: 10),
-          child: Column(
-            children: [
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Text(
-                    'Feed',
-                    style: TextStyle(
-                      fontSize: 30,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                  Icon(
-                    Icons.add,
-                    size: 35,
-                  ),
-                ],
-              ),
-              SizedBox(
-                height: 30,
-              ),
-              Expanded(
-                child: ListView.builder(
-                  itemBuilder: (context, index) {
-                    return Feed();
-                  },
-                ),
-              ),
-            ],
-          ),
-        ),
+        child: _widgetOptions.elementAt(_selectedIndex),
       ),
+
+      bottomNavigationBar: BottomNavigationBar(
+        items: const <BottomNavigationBarItem>[
+          BottomNavigationBarItem(
+            icon: Icon(Icons.home),
+            label: 'Home',
+            backgroundColor: Colors.red,
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.search),
+            label: 'Search',
+            backgroundColor: Colors.green,
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.add),
+            label: 'Post',
+            backgroundColor: Colors.purple,
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.settings),
+            label: 'Settings',
+            backgroundColor: Colors.pink,
+          ),
+        ],
+        currentIndex: _selectedIndex,
+        selectedItemColor: Colors.black,
+        onTap: _onItemTapped,
+      )
     );
   }
 }
