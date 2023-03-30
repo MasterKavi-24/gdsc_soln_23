@@ -3,6 +3,8 @@
 import 'package:flutter/material.dart';
 import 'package:gdsc_soln_23/screens/feed.dart';
 import 'package:gdsc_soln_23/screens/intro.dart';
+import 'package:gdsc_soln_23/screens/profile.dart';
+import 'package:gdsc_soln_23/screens/search.dart';
 import 'package:gdsc_soln_23/widgets/feedCard.dart';
 import 'package:liquid_pull_to_refresh/liquid_pull_to_refresh.dart';
 
@@ -19,9 +21,9 @@ class _HomeState extends State<Home> {
 
   static List<Widget> _widgetOptions = <Widget>[
     Feed(),
-    Intro(),
-    Feed(),
-    Feed(),
+    Search(),
+    // Feed(),
+    Profile(),
   ];
 
 
@@ -63,14 +65,14 @@ class _HomeState extends State<Home> {
             label: 'Search',
             backgroundColor: Colors.green,
           ),
+          // BottomNavigationBarItem(
+          //   icon: Icon(Icons.add),
+          //   label: 'Post',
+          //   backgroundColor: Colors.purple,
+          // ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.add),
-            label: 'Post',
-            backgroundColor: Colors.purple,
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.settings),
-            label: 'Settings',
+            icon: Icon(Icons.person),
+            label: 'Profile',
             backgroundColor: Colors.pink,
           ),
         ],
