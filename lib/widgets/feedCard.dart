@@ -23,6 +23,7 @@ class _FeedCardState extends State<FeedCard> {
   late String postDescription;
   late int postLikes;
   late int postComments;
+  bool _customIcon = false;
 
   @override
   Widget build(BuildContext context) {
@@ -138,10 +139,11 @@ class _FeedCardState extends State<FeedCard> {
               // keep the text within a container of fixed width
               // so that it doesn't overflow
               Container(
-                height: 30,
+                height: 20,
                 width: MediaQuery.of(context).size.width * 0.6,
                 child: Text(
-                  'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
+                  'Lorem ipsum dolor sit amet',
+                  // consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.,
                   style: TextStyle(
                     fontSize: 15,
                   ),
@@ -150,22 +152,31 @@ class _FeedCardState extends State<FeedCard> {
             ],
           ),
           SizedBox(
-            height: 20,
+            height: 10,
           ),
           // align the text to the left
           Align(
             alignment: Alignment.centerLeft,
-            child: Text(
-              'View all 100 comments',
-              style: TextStyle(
-                fontSize: 15,
-                color: Colors.grey,
+            child: ExpansionTile(
+              title: Text("View all 100 comments"),
+              trailing: Icon(
+                _customIcon ? Icons.arrow_drop_down_circle : Icons.arrow_drop_down,
+              ),
+              onExpansionChanged: (bool expanded) {
+                setState(() => _customIcon = expanded);
+              },
+              children: [
+                ListView.builder(
+                  itemBuilder: (context, index) => ListTile(
+                    title: Text("Comment"),
+                  ),
+                  itemCount: 100,
+                ),]
               ),
             ),
-          ),
-          SizedBox(
-            height: 10,
-          ),
+          // SizedBox(
+          //   height: 10,
+          // ),
           Row(
             children: [
               CircleAvatar(
@@ -178,13 +189,23 @@ class _FeedCardState extends State<FeedCard> {
                 width: 10,
               ),
               Expanded(
-                child: TextField(
-                  decoration: InputDecoration(
-                    hintText: 'Add a comment...',
-                    border: InputBorder.none,
+                child:
+                    TextField(
+                    decoration: InputDecoration(
+                      hintText: 'Add your opinions...',
+                      border: InputBorder.none,
+                    ),
+                  ),
+              ),
+              GestureDetector(
+                onTap: () {},
+                child: Text(
+                  'Post',
+                  style: TextStyle(
+                    color: Colors.blue,
                   ),
                 ),
-              ),
+              )
             ],
           ),
         ],

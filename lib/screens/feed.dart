@@ -20,7 +20,7 @@ class _FeedState extends State<Feed> {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Text(
-                'Feed',
+                'Around you...',
                 style: TextStyle(
                   fontSize: 30,
                   fontWeight: FontWeight.bold,

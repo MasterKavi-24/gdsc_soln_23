@@ -38,6 +38,7 @@ class _IntroState extends State<Intro> {
                 child: Icon(Icons.waving_hand, size: 50.0),
               ),
               decoration: const PageDecoration(
+                pageColor: Colors.green,
                 bodyTextStyle: TextStyle(
                   fontSize: 20,
                   fontStyle: FontStyle.italic,

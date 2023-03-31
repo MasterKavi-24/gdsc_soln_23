@@ -6,7 +6,6 @@ import 'package:gdsc_soln_23/services/shared_prefs.dart';
 
 
 void main() {
-
   WidgetsFlutterBinding.ensureInitialized();
   runApp(MyApp());
 }
